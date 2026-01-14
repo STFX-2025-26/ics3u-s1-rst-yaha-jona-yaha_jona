@@ -4,10 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RST_Project {
 
@@ -99,6 +103,28 @@ public class RST_Project {
 		frame.getContentPane().add(lossCounter);
 		
 		JButton guessButton = new JButton("guess");
+		guessButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// button code starts here
+				
+				int guessNum = 0;
+				int randomNum = 6;
+				 
+				try {
+						
+					guessNum = Integer.parseInt(guessNumber.getText());
+				}
+						
+				catch (Exception e2) {
+						
+						JOptionPane.showMessageDialog(null, "Invaild entry.");		
+				}
+				
+				
+				// button code ends here
+			}
+		});
 		guessButton.setFont(new Font("Palatino Linotype", Font.PLAIN, 23));
 		guessButton.setBounds(300, 78, 95, 64);
 		frame.getContentPane().add(guessButton);
