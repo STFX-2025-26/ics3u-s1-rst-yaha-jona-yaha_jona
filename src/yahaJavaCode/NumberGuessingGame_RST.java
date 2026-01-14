@@ -16,7 +16,7 @@ public class NumberGuessingGame_RST {
 	private JTextField userInputTextField;
 	private JTextField userBetTextField;
 	private JTextField amountPointsTextField;
-	private JTextField textField;
+	private JTextField computerNumTextField;
 
 	/**
 	 * Launch the application.
@@ -93,9 +93,9 @@ public class NumberGuessingGame_RST {
 		frame.getContentPane().add(amountPointsTextField);
 		amountPointsTextField.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(299, 210, 86, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		computerNumTextField = new JTextField();
+		computerNumTextField.setBounds(299, 210, 86, 20);
+		frame.getContentPane().add(computerNumTextField);
+		computerNumTextField.setColumns(10);
 	}
 }
