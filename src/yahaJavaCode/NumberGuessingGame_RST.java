@@ -94,6 +94,7 @@ public class NumberGuessingGame_RST {
 		amountPointsTextField.setColumns(10);
 		
 		computerNumTextField = new JTextField();
+		computerNumTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		computerNumTextField.setBounds(299, 210, 86, 20);
 		frame.getContentPane().add(computerNumTextField);
 		computerNumTextField.setColumns(10);
