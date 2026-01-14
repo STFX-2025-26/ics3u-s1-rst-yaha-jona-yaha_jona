@@ -13,10 +13,10 @@ import java.awt.event.ActionEvent;
 public class NumberGuessingGame_RST {
 
 	private JFrame frame;
-	private JTextField userInputTextField;
-	private JTextField userBetTextField;
-	private JTextField amountPointsTextField;
-	private JTextField computerNumTextField;
+	private JTextField numGuessTextField;
+	private JTextField betPointsTextField;
+	private JTextField pointsTextField;
+	private JTextField randomNumTextField;
 
 	/**
 	 * Launch the application.
@@ -56,47 +56,101 @@ public class NumberGuessingGame_RST {
 		frame.getContentPane().add(titleLabel);
 		
 		JLabel instructionLabel = new JLabel("This is a game where you bet points and guess a number 1-6");
+		instructionLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		instructionLabel.setBounds(70, 43, 315, 14);
 		frame.getContentPane().add(instructionLabel);
 		
-		userInputTextField = new JTextField();
-		userInputTextField.setText("Write Your Guess Here");
-		userInputTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		userInputTextField.setBounds(10, 209, 116, 20);
-		frame.getContentPane().add(userInputTextField);
-		userInputTextField.setColumns(10);
+		numGuessTextField = new JTextField();
+		numGuessTextField.setText("Write Your Guess Here");
+		numGuessTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		numGuessTextField.setBounds(10, 209, 116, 20);
+		frame.getContentPane().add(numGuessTextField);
+		numGuessTextField.setColumns(10);
 		
 		JButton rollNumberButton = new JButton("Roll Dice");
 		rollNumberButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
+				// Code Starts Here
+			    
+				// Variables 
+				int points = 1000;
+				int betPoints = 0;
+				int userGuess = 0;
+				int pointHolder = 0;
+				
+				// Get amount of points bet from user
+				int betPoints1 = Integer.parseInt(betPointsTextField.getText());
+				betPoints1 = betPoints;
+				
+				// Get the number guessed by the user
+				int userGuess1 = Integer.parseInt(numGuessTextField.getText());
+				userGuess1 = userGuess;
+				
+				// Random number
+				int n4 = 6;
+				int randomNum = (int) (Math.random() * n4) + 1;
+				
+				// Send the random number back to the GUI
+				randomNumTextField.setText(String.valueOf(randomNum));
+				
+				
+				// Decide who wins 
+				if (userGuess1 != randomNum){
+					
+					pointHolder = betPoints1 / 2;
+					points = points - pointHolder;
+					
+					
+					pointsTextField.setText(String.valueOf(points));
+				}
+				
+				else if (userGuess1 == randomNum) {
+					
+					pointHolder = betPoints1 * 2;
+					pointHolder = pointHolder - betPoints1;
+					points = points + pointHolder;
+					
+				}
+				
+					
+					
+				
+			
+				
+				
+				
+				// Code Ends Here	
+			
 			}
 		});
 		rollNumberButton.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		rollNumberButton.setBounds(149, 207, 89, 23);
 		frame.getContentPane().add(rollNumberButton);
 		
-		userBetTextField = new JTextField();
-		userBetTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		userBetTextField.setText("Bet Here");
-		userBetTextField.setBounds(10, 166, 86, 20);
-		frame.getContentPane().add(userBetTextField);
-		userBetTextField.setColumns(10);
+		betPointsTextField = new JTextField();
+		betPointsTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		betPointsTextField.setText("Bet Here");
+		betPointsTextField.setBounds(10, 166, 86, 20);
+		frame.getContentPane().add(betPointsTextField);
+		betPointsTextField.setColumns(10);
 		
 		JLabel amountPointsLabel = new JLabel("Total Amount Of Points:");
 		amountPointsLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		amountPointsLabel.setBounds(21, 80, 134, 14);
 		frame.getContentPane().add(amountPointsLabel);
 		
-		amountPointsTextField = new JTextField();
-		amountPointsTextField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		amountPointsTextField.setBounds(149, 77, 86, 20);
-		frame.getContentPane().add(amountPointsTextField);
-		amountPointsTextField.setColumns(10);
+		pointsTextField = new JTextField();
+		pointsTextField.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		pointsTextField.setBounds(149, 77, 86, 20);
+		frame.getContentPane().add(pointsTextField);
+		pointsTextField.setColumns(10);
 		
-		computerNumTextField = new JTextField();
-		computerNumTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		computerNumTextField.setBounds(299, 210, 86, 20);
-		frame.getContentPane().add(computerNumTextField);
-		computerNumTextField.setColumns(10);
+		randomNumTextField = new JTextField();
+		randomNumTextField.setText("Dice Number Will Appear Here");
+		randomNumTextField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		randomNumTextField.setBounds(265, 209, 159, 20);
+		frame.getContentPane().add(randomNumTextField);
+		randomNumTextField.setColumns(10);
 	}
 }
