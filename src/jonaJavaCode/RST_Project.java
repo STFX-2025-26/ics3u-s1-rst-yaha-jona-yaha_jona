@@ -110,18 +110,55 @@ public class RST_Project {
 				
 				int guessNum = 0;
 				int randomNum = 6;
-				 
+				int randomNum2 = 0;
+				
+				// if user types exit it exits
+				
+				
+				
+				String input = guessNumber.getText().trim();
+
+				if (input.equalsIgnoreCase("exit")) {
+				    System.exit(0);
+				}
+						
+				
+				// getting number from user and random number for computer
 				try {
-						
-					guessNum = Integer.parseInt(guessNumber.getText());
+				    guessNum = Integer.parseInt(guessNumber.getText());
 				}
-						
 				catch (Exception e2) {
-						
-						JOptionPane.showMessageDialog(null, "Invaild entry.");		
+				    JOptionPane.showMessageDialog(null,"Invalid entry. Enter a number from 1 to 6 or type 'exit'" );
+				    guessNumber.setText(""); 
+				    return; 
 				}
+
 				
+				randomNum2 = (int) (Math.random() * randomNum) + 1;
 				
+				randomNumber.setText(Integer.toString(randomNum2));
+				
+				// Checking if the users guess and random number are same or different
+				if (guessNum == randomNum2) {
+					
+					int wins = 0;
+					
+				    wins = Integer.parseInt(winsCounter.getText());
+				    wins++;
+				    winsCounter.setText(Integer.toString(wins));
+				    JOptionPane.showMessageDialog(null, "You Win! To play another round just enter a new guess and hit guess");
+
+				} else {
+					
+					int losses = 0;
+
+				    losses = Integer.parseInt(lossCounter.getText());
+				    losses++;
+				    lossCounter.setText(Integer.toString(losses));
+				    JOptionPane.showMessageDialog(null, "You Lose, to try again just enter new guess and hit guess");
+
+				}
+
 				// button code ends here
 			}
 		});
@@ -138,5 +175,26 @@ public class RST_Project {
 		randomNumber.setBounds(338, 198, 86, 20);
 		frame.getContentPane().add(randomNumber);
 		randomNumber.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Restart");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				// button code starts here
+		
+				winsCounter.setText("");
+				lossCounter.setText("");
+				randomNumber.setText("");
+				guessNumber.setText("");
+
+				
+				// button code ends here
+				
+				
+			}
+		});
+		btnNewButton.setBounds(300, 157, 95, 23);
+		frame.getContentPane().add(btnNewButton);
 	}
 }
