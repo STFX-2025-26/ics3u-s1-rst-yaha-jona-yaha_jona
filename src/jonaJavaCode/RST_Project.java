@@ -20,6 +20,7 @@ public class RST_Project {
 	private JTextField winsCounter;
 	private JTextField lossCounter;
 	private JTextField randomNumber;
+	private JTextField message;
 
 	/**
 	 * Launch the application.
@@ -84,6 +85,7 @@ public class RST_Project {
 		frame.getContentPane().add(lblNewLabel_1_3);
 		
 		JLabel lblNewLabel_1_4 = new JLabel("Losses");
+		lblNewLabel_1_4.setBackground(new Color(128, 64, 0));
 		lblNewLabel_1_4.setFont(new Font("Palatino Linotype", Font.PLAIN, 27));
 		lblNewLabel_1_4.setBounds(20, 187, 139, 47);
 		frame.getContentPane().add(lblNewLabel_1_4);
@@ -146,7 +148,7 @@ public class RST_Project {
 				    wins = Integer.parseInt(winsCounter.getText());
 				    wins++;
 				    winsCounter.setText(Integer.toString(wins));
-				    JOptionPane.showMessageDialog(null, "You Win! To play another round just enter a new guess and hit guess");
+				    message.setText("You Win! To play another round just enter a new guess and hit guess");
 
 				} else {
 					
@@ -155,7 +157,7 @@ public class RST_Project {
 				    losses = Integer.parseInt(lossCounter.getText());
 				    losses++;
 				    lossCounter.setText(Integer.toString(losses));
-				    JOptionPane.showMessageDialog(null, "You Lose, to try again just enter new guess and hit guess");
+				    message.setText("You Lose, to try again just enter new guess and hit guess");
 
 				}
 
@@ -183,11 +185,11 @@ public class RST_Project {
 				
 				// button code starts here
 		
-				winsCounter.setText("");
-				lossCounter.setText("");
+				winsCounter.setText("0");
+				lossCounter.setText("0");
 				randomNumber.setText("");
 				guessNumber.setText("");
-
+				message.setText("Take a guess!!!");
 				
 				// button code ends here
 				
@@ -196,5 +198,12 @@ public class RST_Project {
 		});
 		btnNewButton.setBounds(300, 157, 95, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		message = new JTextField();
+		message.setText("Take a guess!!!");
+		message.setBackground(new Color(240, 230, 140));
+		message.setBounds(20, 230, 389, 20);
+		frame.getContentPane().add(message);
+		message.setColumns(10);
 	}
 }
