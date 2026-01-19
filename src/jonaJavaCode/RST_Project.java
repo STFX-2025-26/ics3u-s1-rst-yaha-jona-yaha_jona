@@ -134,6 +134,14 @@ public class RST_Project {
 				    guessNumber.setText(""); 
 				    return; 
 				}
+				
+				if (guessNum < 1 || guessNum > 6) {
+			        JOptionPane.showMessageDialog(
+			            null,
+			            "Invalid entry. Enter a number from 1 to 6 or type 'exit'"
+			        );
+			        return;
+			    }
 
 				
 				randomNum2 = (int) (Math.random() * randomNum) + 1;
